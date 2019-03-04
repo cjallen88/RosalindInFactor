@@ -1,0 +1,31 @@
+! Copyright (C) 2019 Craig Allen
+! See http://factorcode.org/license.txt for BSD license.
+USING: tools.test kernel math RosalindInFactor.tier4.gc.fasta RosalindInFactor.tier4.gc.fasta.private ;
+IN: RosalindInFactor.tier4.gc.fasta.tests
+
+{ T{ strand f "name" } } [ "name" new-strand-named ] unit-test
+
+{ { 1 2 12 } } [ { 1 2 3 } clone dup [ 4 * ] change-last ] unit-test
+
+{ V{ T{ strand f
+        "Rosalind_6404"
+        "CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG"
+      }
+     T{ strand f
+        "Rosalind_5959"
+        "CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC"
+      }
+     T{ strand f
+        "Rosalind_0808"
+        "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"
+      }
+   }
+} [ ">Rosalind_6404
+CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC
+TCCCACTAATAATTCTGAGG
+>Rosalind_5959
+CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCT
+ATATCCATTTGTCAGCAGACACGC
+>Rosalind_0808
+CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGAC
+TGGGAACCTGCGGGCAGTAGGTGGAAT" read-fasta ] unit-test
